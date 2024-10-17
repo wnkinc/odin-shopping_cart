@@ -1,21 +1,41 @@
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products?limit=3")
+      .then((response) => response.json())
+      .then((data) => setFeaturedProducts(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
   return (
     <div className={styles.container}>
-      <Navbar /> {/* Include Navbar here */}
+      <Navbar />
       <header className={styles.heroSection}>
         <h1>Welcome to Our Store!</h1>
         <p>Find the best products at unbeatable prices.</p>
-        <button className={styles.shopNowBtn}>Shop Now</button>
+        <Link to="/products">
+          <button className={styles.shopNowBtn}>Shop Now</button>
+        </Link>
       </header>
       <section className={styles.featuredProducts}>
         <h2>Featured Products</h2>
         <div className={styles.productList}>
-          <div className={styles.productCard}>Product 1</div>
-          <div className={styles.productCard}>Product 2</div>
-          <div className={styles.productCard}>Product 3</div>
+          {featuredProducts.map((product) => (
+            <div key={product.id} className={styles.productCard}>
+              <img
+                src={product.image}
+                alt={product.title}
+                className={styles.productImage}
+              />
+              <p>{product.title}</p>
+            </div>
+          ))}
         </div>
       </section>
       <footer className={styles.footer}>

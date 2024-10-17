@@ -1,0 +1,106 @@
+/* Container for the whole page */
+.container {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navLinks {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navLinks li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.heroSection {
+  text-align: center;
+  padding: 50px;
+  background-color: #f4f4f4;
+}
+
+.heroSection h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.heroSection p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.shopNowBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.shopNowBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Featured Products */
+.featuredProducts {
+  padding: 40px;
+  text-align: center;
+}
+
+.featuredProducts h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.productList {
+  display: flex;
+  justify-content: space-around;
+}
+
+.productCard {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+}
+
+.productCard:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}

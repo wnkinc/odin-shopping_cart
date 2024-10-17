@@ -1,5 +1,6 @@
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import HomePage from "./components/HomePage/HomePage";
+import ProductPage from "./components/ProductPage/ProductPage";
 // import Profile from "./Profile";
 // import ErrorPage from "./components/ErrorPage";
 
@@ -9,10 +10,10 @@ const routes = [
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
-  //   {
-  //     path: "profile/:name",
-  //     element: <Profile />,
-  //   },
+  {
+    path: "products",
+    element: <ProductPage />,
+  },
 ];
 
 export default routes;

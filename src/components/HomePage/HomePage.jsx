@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./HomePage.module.css";
+import PropTypes from "prop-types";
 
-const HomePage = () => {
+const HomePage = ({ totalCartItems }) => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
-      <Navbar />
+      <Navbar totalCartItems={totalCartItems} />
       <header className={styles.heroSection}>
         <h1>Welcome to Our Store!</h1>
         <p>Find the best products at unbeatable prices.</p>
@@ -43,6 +44,10 @@ const HomePage = () => {
       </footer>
     </div>
   );
+};
+
+HomePage.propTypes = {
+  totalCartItems: PropTypes.number.isRequired,
 };
 
 export default HomePage;

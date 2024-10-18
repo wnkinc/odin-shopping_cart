@@ -30,7 +30,7 @@ const App = () => {
   const routes = [
     {
       path: "/",
-      element: <HomePage />,
+      element: <HomePage totalCartItems={totalCartItems} />,
       errorElement: <ErrorPage />,
     },
     {

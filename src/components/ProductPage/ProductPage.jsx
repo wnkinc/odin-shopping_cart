@@ -58,9 +58,11 @@ const ProductPage = ({ handleAddToCart, totalCartItems }) => {
     return <p>Loading products...</p>;
   }
 
+  console.log("PP rendered with totalCartItems:", totalCartItems);
+
   return (
     <div>
-      <Navbar cartItemCount={totalCartItems} />
+      <Navbar totalCartItems={totalCartItems} />
       <div className={styles.productGrid}>
         {products.map((product) => (
           <div className={styles.card} key={product.id}>

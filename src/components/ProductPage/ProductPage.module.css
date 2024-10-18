@@ -65,8 +65,6 @@
   color: #e67e22; /* Orange color for price */
 }
 
-/* Existing styles ... */
-
 .quantityControls {
   display: flex;
   justify-content: center;
@@ -106,6 +104,7 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .addToCartBtn:hover {

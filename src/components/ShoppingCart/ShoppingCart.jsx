@@ -2,12 +2,20 @@ import PropTypes from "prop-types"; // Import PropTypes at the top
 import Navbar from "../Navbar/Navbar";
 import styles from "./ShoppingCart.module.css";
 
-const ShoppingCart = ({ cartItems, totalCartItems }) => {
+const ShoppingCart = ({
+  cartItems,
+  totalCartItems,
+  incrementItemQuantity,
+  decrementItemQuantity,
+}) => {
   const handleCheckout = () => {
     alert("Proceeding to checkout");
   };
 
-  console.log("ShoppingCart rendered with totalCartItems:", totalCartItems);
+  // Calculate total price
+  const totalPrice = cartItems
+    .reduce((total, item) => total + item.price * item.count, 0)
+    .toFixed(2);
 
   return (
     <div className={styles.container}>
@@ -19,7 +27,21 @@ const ShoppingCart = ({ cartItems, totalCartItems }) => {
             {cartItems.map((item) => (
               <li key={item.id} className={styles.cartItem}>
                 <span>{item.title}</span>
-                <span>Qty: {item.count}</span>
+                <div className={styles.quantityContainer}>
+                  <button
+                    onClick={() => decrementItemQuantity(item.id)}
+                    className={styles.decrementBtn}
+                  >
+                    -
+                  </button>
+                  <span>{item.count}</span>
+                  <button
+                    onClick={() => incrementItemQuantity(item.id)}
+                    className={styles.incrementBtn}
+                  >
+                    +
+                  </button>
+                </div>
                 <span>${(item.price * item.count).toFixed(2)}</span>
               </li>
             ))}
@@ -27,6 +49,9 @@ const ShoppingCart = ({ cartItems, totalCartItems }) => {
         ) : (
           <p>Your cart is empty.</p>
         )}
+        <div className={styles.totalContainer}>
+          <h2>Total: ${totalPrice}</h2>
+        </div>
         <button onClick={handleCheckout} className={styles.checkoutBtn}>
           Checkout
         </button>
@@ -45,6 +70,8 @@ ShoppingCart.propTypes = {
     })
   ).isRequired,
   totalCartItems: PropTypes.number,
+  incrementItemQuantity: PropTypes.func.isRequired,
+  decrementItemQuantity: PropTypes.func.isRequired,
 };
 
 export default ShoppingCart;

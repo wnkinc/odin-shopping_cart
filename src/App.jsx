@@ -22,6 +22,26 @@ const App = () => {
     });
   };
 
+  const incrementItemQuantity = (id) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, count: item.count + 1 } : item
+      )
+    );
+  };
+
+  const decrementItemQuantity = (id) => {
+    setCartItems((prevItems) => {
+      return prevItems
+        .map((item) =>
+          item.id === id && item.count > 0
+            ? { ...item, count: item.count - 1 }
+            : item
+        )
+        .filter((item) => item.count > 0); // Remove items with count 0
+    });
+  };
+
   const totalCartItems = cartItems.reduce(
     (total, item) => total + item.count,
     0
@@ -45,7 +65,12 @@ const App = () => {
     {
       path: "shoppingCart",
       element: (
-        <ShoppingCart cartItems={cartItems} totalCartItems={totalCartItems} />
+        <ShoppingCart
+          cartItems={cartItems}
+          totalCartItems={totalCartItems}
+          incrementItemQuantity={incrementItemQuantity}
+          decrementItemQuantity={decrementItemQuantity}
+        />
       ),
     },
   ];

@@ -22,6 +22,11 @@ const App = () => {
     });
   };
 
+  const totalCartItems = cartItems.reduce(
+    (total, item) => total + item.count,
+    0
+  );
+
   const routes = [
     {
       path: "/",
@@ -30,11 +35,18 @@ const App = () => {
     },
     {
       path: "products",
-      element: <ProductPage handleAddToCart={handleAddToCart} />,
+      element: (
+        <ProductPage
+          handleAddToCart={handleAddToCart}
+          totalCartItems={totalCartItems}
+        />
+      ),
     },
     {
       path: "shoppingCart",
-      element: <ShoppingCart cartItems={cartItems} />,
+      element: (
+        <ShoppingCart cartItems={cartItems} totalCartItems={totalCartItems} />
+      ),
     },
   ];
 

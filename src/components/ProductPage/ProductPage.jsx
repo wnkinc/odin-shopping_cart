@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./ProductPage.module.css";
 
-const ProductPage = ({ handleAddToCart }) => {
+const ProductPage = ({ handleAddToCart, totalCartItems }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // Track loading state
   const [quantities, setQuantities] = useState({}); // Track quantities of products
@@ -60,7 +60,7 @@ const ProductPage = ({ handleAddToCart }) => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar cartItemCount={totalCartItems} />
       <div className={styles.productGrid}>
         {products.map((product) => (
           <div className={styles.card} key={product.id}>
@@ -114,7 +114,8 @@ const ProductPage = ({ handleAddToCart }) => {
 };
 
 ProductPage.propTypes = {
-  handleAddToCart: PropTypes.func.isRequired, // Define PropTypes for handleAddToCart
+  handleAddToCart: PropTypes.func.isRequired,
+  totalCartItems: PropTypes.number.isRequired,
 };
 
 export default ProductPage;

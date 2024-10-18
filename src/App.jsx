@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useRoutes } from "react-router-dom";
-import routes from "./routes"; // Import your routes configuration
-import ProductPage from "./ProductPage"; // Import ProductPage component
-import ShoppingCart from "./ShoppingCart"; // Import ShoppingCart component
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import HomePage from "./components/HomePage/HomePage";
+import ProductPage from "./components/ProductPage/ProductPage";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -21,26 +22,25 @@ const App = () => {
     });
   };
 
-  // Pass state and function as props where needed, e.g., to ProductPage and ShoppingCart
-  const element = useRoutes(
-    routes.map((route) => {
-      if (route.path === "products") {
-        return {
-          ...route,
-          element: <ProductPage handleAddToCart={handleAddToCart} />,
-        };
-      }
-      if (route.path === "shoppingCart") {
-        return {
-          ...route,
-          element: <ShoppingCart cartItems={cartItems} />,
-        };
-      }
-      return route;
-    })
-  );
+  const routes = [
+    {
+      path: "/",
+      element: <HomePage />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "products",
+      element: <ProductPage handleAddToCart={handleAddToCart} />,
+    },
+    {
+      path: "shoppingCart",
+      element: <ShoppingCart cartItems={cartItems} />,
+    },
+  ];
 
-  return <>{element}</>;
+  const router = createBrowserRouter(routes);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;

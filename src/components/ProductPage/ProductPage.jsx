@@ -50,6 +50,7 @@ const ProductPage = ({ handleAddToCart }) => {
 
   const addToCart = (product) => {
     const quantity = quantities[product.id] || 0;
+    console.log("Adding to cart:", product, "Quantity:", quantity); // Check values here
     handleAddToCart(product, quantity);
   };
 

@@ -7,6 +7,8 @@ const ShoppingCart = ({ cartItems, totalCartItems }) => {
     alert("Proceeding to checkout");
   };
 
+  console.log("ShoppingCart rendered with totalCartItems:", totalCartItems);
+
   return (
     <div className={styles.container}>
       <Navbar totalCartItems={totalCartItems} />
@@ -33,11 +35,6 @@ const ShoppingCart = ({ cartItems, totalCartItems }) => {
   );
 };
 
-// Define default props to ensure cartItems is at least an empty array
-ShoppingCart.defaultProps = {
-  cartItems: [],
-};
-
 ShoppingCart.propTypes = {
   cartItems: PropTypes.arrayOf(
     PropTypes.shape({
@@ -47,7 +44,7 @@ ShoppingCart.propTypes = {
       price: PropTypes.number.isRequired,
     })
   ).isRequired,
-  totalCartItems: PropTypes.number.isRequired,
+  totalCartItems: PropTypes.number,
 };
 
 export default ShoppingCart;

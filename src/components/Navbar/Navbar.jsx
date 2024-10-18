@@ -3,7 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import styles from "./Navbar.module.css";
 import PropTypes from "prop-types"; // Import PropTypes
 
-const Navbar = ({ cartItemCount }) => {
+const Navbar = ({ totalCartItems }) => {
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.logo}>
@@ -26,8 +26,8 @@ const Navbar = ({ cartItemCount }) => {
           <Link to="/shoppingCart">
             <ShoppingCart size={24} />
             {/* Display cart item count if it's greater than 0 */}
-            {cartItemCount > 0 && (
-              <span className={styles.cartCount}>{cartItemCount}</span>
+            {totalCartItems > 0 && (
+              <span className={styles.cartCount}>{totalCartItems}</span>
             )}
           </Link>
         </li>
@@ -38,7 +38,7 @@ const Navbar = ({ cartItemCount }) => {
 
 // Define prop types for the component
 Navbar.propTypes = {
-  cartItemCount: PropTypes.number.isRequired, // Expect cartItemCount to be a number and required
+  totalCartItems: PropTypes.number,
 };
 
 export default Navbar;

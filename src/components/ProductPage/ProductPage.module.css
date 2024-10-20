@@ -1,9 +1,6 @@
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Create responsive card layout */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
@@ -20,7 +17,7 @@
 }
 
 .card:hover {
-  transform: translateY(-10px); /* Lift effect on hover */
+  transform: translateY(-10px);
 }
 
 .cardHeader {
@@ -45,7 +42,7 @@
 .productImage {
   max-width: 100%;
   height: 200px;
-  object-fit: contain; /* Ensure image fits inside card */
+  object-fit: contain;
 }
 
 .cardFooter {
@@ -62,7 +59,7 @@
 .price {
   font-size: 18px;
   font-weight: bold;
-  color: #e67e22; /* Orange color for price */
+  color: #e67e22;
 }
 
 .quantityControls {

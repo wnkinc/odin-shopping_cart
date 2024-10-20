@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"; // Import PropTypes at the top
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./ProductPage.module.css";
 
 const ProductPage = ({ handleAddToCart, totalCartItems }) => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Track loading state
-  const [quantities, setQuantities] = useState({}); // Track quantities of products
+  const [loading, setLoading] = useState(true);
+  const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,7 +34,7 @@ const ProductPage = ({ handleAddToCart, totalCartItems }) => {
   const handleDecrement = (id) => {
     setQuantities((prev) => ({
       ...prev,
-      [id]: Math.max((prev[id] || 0) - 1, 0), // Prevent negative quantities
+      [id]: Math.max((prev[id] || 0) - 1, 0),
     }));
   };
 
@@ -50,15 +50,12 @@ const ProductPage = ({ handleAddToCart, totalCartItems }) => {
 
   const addToCart = (product) => {
     const quantity = quantities[product.id] || 0;
-    console.log("Adding to cart:", product, "Quantity:", quantity); // Check values here
     handleAddToCart(product, quantity);
   };
 
   if (loading) {
     return <p>Loading products...</p>;
   }
-
-  console.log("PP rendered with totalCartItems:", totalCartItems);
 
   return (
     <div>

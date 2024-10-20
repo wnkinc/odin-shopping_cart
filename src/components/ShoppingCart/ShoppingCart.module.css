@@ -19,7 +19,7 @@
 .cartItem {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Align items vertically in the center */
+  align-items: center;
   margin-bottom: 10px;
   padding: 10px;
   border-bottom: 1px solid #ddd;
@@ -27,8 +27,8 @@
 
 .quantityContainer {
   display: flex;
-  align-items: center; /* Center align the buttons and quantity */
-  gap: 5px; /* Add space between buttons and quantity */
+  align-items: center;
+  gap: 5px;
 }
 
 .incrementBtn,
@@ -47,7 +47,7 @@
 }
 
 .totalContainer {
-  margin-top: 20px; /* Add some space above the total */
+  margin-top: 20px;
 }
 
 .checkoutBtn {

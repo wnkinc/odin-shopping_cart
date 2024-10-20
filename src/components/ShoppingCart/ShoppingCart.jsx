@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"; // Import PropTypes at the top
+import PropTypes from "prop-types";
 import Navbar from "../Navbar/Navbar";
 import styles from "./ShoppingCart.module.css";
 
@@ -12,7 +12,6 @@ const ShoppingCart = ({
     alert("Proceeding to checkout");
   };
 
-  // Calculate total price
   const totalPrice = cartItems
     .reduce((total, item) => total + item.price * item.count, 0)
     .toFixed(2);

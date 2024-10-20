@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import styles from "./Navbar.module.css";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 
 const Navbar = ({ totalCartItems }) => {
   return (
@@ -25,7 +25,6 @@ const Navbar = ({ totalCartItems }) => {
         <li className={styles.cartLink}>
           <Link to="/shoppingCart">
             <ShoppingCart size={24} />
-            {/* Display cart item count if it's greater than 0 */}
             {totalCartItems > 0 && (
               <span className={styles.cartCount}>{totalCartItems}</span>
             )}
@@ -36,7 +35,6 @@ const Navbar = ({ totalCartItems }) => {
   );
 };
 
-// Define prop types for the component
 Navbar.propTypes = {
   totalCartItems: PropTypes.number,
 };
